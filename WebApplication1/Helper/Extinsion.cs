@@ -15,11 +15,13 @@ namespace WebApplication1.Helper
             return new BookResourse()
             {
                 Id = entitiy.Id,
-                Author = entitiy.Author,
+                //Author = entitiy.Author,
                 PublisherId = entitiy.PublisherId,
-                Title = entitiy.Title
+                Title = entitiy.Title,
             };
         }
+
+
 
         public static List<BookResourse> ToResource(this List<Book> entities)
         {
@@ -40,5 +42,41 @@ namespace WebApplication1.Helper
                 Books = entities.Books?.ToResource()
             };
         }
+
+
+        public static PublisherResourse ToResourceWith(this Publisher entities)
+        {
+            return new PublisherResourse()
+            {
+                Id = entities.Id,
+                Name = entities.Name,
+             
+            };
+        }
+
+        public static BookResourse ToResourceWith(this Book entitiy)
+        {
+            return new BookResourse()
+            {
+                Id = entitiy.Id,
+                //Author = entitiy.Author,
+                PublisherId = entitiy.PublisherId,
+                Title = entitiy.Title,
+                publisherResourse = entitiy.Publisher.ToResourceWith()
+            };
+        }
+
+        public static AuthorResource ToResource(this Author entitiy)
+        {
+            return new AuthorResource()
+            {
+                FullName = entitiy.FullName,
+                Id = entitiy.Id
+            };
+
+        }
+
     }
 }
+
+

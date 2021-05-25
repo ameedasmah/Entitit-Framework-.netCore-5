@@ -35,6 +35,7 @@ namespace WebApplication1
             services.AddDbContext<BookContext>(o => o.UseSqlServer(Configuration.GetConnectionString("BookDBConnection")));
             services.AddScoped<IBookRepository, BookRepositories>();
             services.AddScoped<IPublisherRepositories, PublisherReposoitories>();
+            services.AddScoped<IAuthorRepositories, AuthorRepositories>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

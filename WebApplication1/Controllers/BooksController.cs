@@ -21,9 +21,15 @@ namespace WebApplication1.Controllers
             _bookRepository = bookRepository;
         }
         [HttpGet]
-        public async Task<IEnumerable<Book>> GetBooks()
+        public async Task<IEnumerable<BookResourse>> GetBooks()
         {
-            return await _bookRepository.Get();
+            var BookEntities = await _bookRepository.Get();
+            var bookResources = new List<BookResourse>();
+            foreach(var item in BookEntities)
+            {
+                bookResources.Add(item.ToResourceWith());
+            }
+                    return bookResources;
         }
 
         [HttpGet("{id}")]
@@ -42,7 +48,7 @@ namespace WebApplication1.Controllers
                 //Id = bookModel.Id,
                 PublisherId= bookModel.PublisherId,
                 Title = bookModel.Title,
-                Author = bookModel.Author,
+                //Author = bookModel.Author,
                 Discraptions = bookModel.Discraptions
             };
 

@@ -10,7 +10,7 @@ namespace WebApplication1.Data
     {
         public int Id {get; set;}
         public String Title { get; set; }
-        public String Author { get; set; }
+        //public String Author { get; set; }
         public String Discraptions { get; set; }
 
         //Navigation Properites
