@@ -20,12 +20,24 @@ namespace WebApplication1.Helper
                 Title = entitiy.Title
             };
         }
-        public static PublisherResourse ToResourcePubl(this Publisher entituy)
+
+        public static List<BookResourse> ToResource(this List<Book> entities)
+        {
+            var response = new List<BookResourse>();
+            foreach(var item in entities)
+            {
+                response.Add(item.ToResource());
+            }
+            return response;
+        }
+
+        public static PublisherResourse ToResource(this Publisher entities)
         {
             return new PublisherResourse()
             {
-                Id = entituy.Id,
-                Name = entituy.Name
+                Id = entities.Id,
+                Name = entities.Name,
+                Books = entities.Books?.ToResource()
             };
         }
     }

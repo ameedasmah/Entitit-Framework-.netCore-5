@@ -19,7 +19,7 @@ namespace WebApplication1.Repositories
         {
             _Context.Add(publisher);
             await _Context.SaveChangesAsync();
-                return publisher;
+                return await _Context.publishers.Include(item => item.Books).FirstOrDefaultAsync(x => x.Id == publisher.Id);
         }
 
         public Task<Publisher> deletePublisher(int Id)

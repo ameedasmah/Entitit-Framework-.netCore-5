@@ -23,9 +23,17 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Publisher>> GetPublishers()
+        public async Task<IEnumerable<PublisherResourse>> GetPublishers()
         {
-            return await _repository.GetPublishers();
+            var PublisherEntii =  await _repository.GetPublishers();
+
+            var newPublisherEntii = new List<PublisherResourse>();
+
+            foreach (var item in PublisherEntii)
+            {
+                newPublisherEntii.Add(item.ToResource());
+            }
+            return newPublisherEntii;
         }
 
         [HttpGet("{id}")]
@@ -45,7 +53,7 @@ namespace WebApplication1.Controllers
 
             var newPublisher = await _repository.CreatePublisher(newPublisherEntity);
 
-            return  CreatedAtAction(nameof(GetPublisher),new { Id= newPublisherEntity.Id }, newPublisher.ToResourcePubl());
+            return  CreatedAtAction(nameof(GetPublisher),new { Id= newPublisherEntity.Id }, newPublisher.ToResource());
         }
         [HttpPut("{id}")]
 
