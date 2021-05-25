@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplication1.Data;
+using WebApplication1.Helper;
 using WebApplication1.Repositories;
 
 namespace WebApplication1.Controllers
@@ -39,6 +40,7 @@ namespace WebApplication1.Controllers
             var newBook = new Book()
             {
                 //Id = bookModel.Id,
+                PublisherId= bookModel.PublisherId,
                 Title = bookModel.Title,
                 Author = bookModel.Author,
                 Discraptions = bookModel.Discraptions
@@ -46,14 +48,7 @@ namespace WebApplication1.Controllers
 
             var newBooksss = await _bookRepository.Create(newBook);
 
-            var newBookResp = new BookResourse()
-            {
-                //Id = bookModel.Id,
-                Title = bookModel.Title,
-                Author = bookModel.Author,
-            };
-
-            return CreatedAtAction(nameof(GetBooks), new { id = newBook.Id }, newBookResp);
+            return CreatedAtAction(nameof(GetBooks), new { id = newBook.Id }, newBooksss.ToResource());
         }
         [HttpPut("{id}")]
 

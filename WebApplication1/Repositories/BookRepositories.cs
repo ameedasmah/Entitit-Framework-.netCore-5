@@ -38,18 +38,19 @@ namespace WebApplication1.Repositories
 
         public async Task<IEnumerable<Book>> Get()
         {
-            return await _Context.Books.ToListAsync();
+            return await _Context.Books.Include(X => X.Publisher).ToListAsync();
         }
 
         public async Task<Book> Get(int Id)
         {
-            return await _Context.Books.FindAsync(Id);
+            return await _Context.Books.Include(X => X.Publisher).FirstOrDefaultAsync(X => X.Id == Id);
         }
 
         public async Task Update(Book book)
         {
             _Context.Entry(book).State = EntityState.Modified;
             await _Context.SaveChangesAsync();
+
         }
     }
         }
