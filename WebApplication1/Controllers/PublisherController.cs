@@ -57,11 +57,14 @@ namespace WebApplication1.Controllers
         }
         [HttpPut("{id}")]
 
-        public async Task<ActionResult> PutPublisher(int id, [FromBody] Publisher publisher)
+        public async Task<ActionResult<PublisherResourse>> PutPublisher(int id, [FromBody] PublisherModel model)
         {
-            await _repository.updatePublisher(publisher);
+            var existingEntity = await _repository.GetPublisher(id);
+            if (existingEntity == null) { return NotFound(); }
 
-            return NoContent();
+            existingEntity.Name = model.Name;
+            var updatedEntity = await _repository.updatePublisher(existingEntity);
+            return Ok(updatedEntity.ToResource());
         } 
         [HttpDelete("{Id}")]
         public async Task<ActionResult> DeleteResource(int Id)

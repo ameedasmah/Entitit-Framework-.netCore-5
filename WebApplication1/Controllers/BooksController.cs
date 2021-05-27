@@ -26,22 +26,23 @@ namespace WebApplication1.Controllers
         {
             var BookEntities = await _bookRepository.Get();
             var bookResources = new List<NewBookResourse>();
-            foreach(var item in BookEntities)
+            foreach (var item in BookEntities)
             {
                 bookResources.Add(item.ToResourceNew());
             }
-                    return bookResources;
+            return bookResources;
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<NewBookResourse>> GetBooks(int id)
         {
-            var BookEntities =  await _bookRepository.Get(id);
-            if(BookEntities is null){
+            var BookEntities = await _bookRepository.Get(id);
+            if (BookEntities is null)
+            {
                 return NotFound();
             }
             return BookEntities.ToResourceNew();
-           
+
 
 
         }
@@ -57,8 +58,8 @@ namespace WebApplication1.Controllers
 
             var newBook = new Book()
             {
-                PublisherId= bookModel.PublisherId,
-                Title=bookModel.Title,
+                PublisherId = bookModel.PublisherId,
+                Title = bookModel.Title,
                 Discraptions = bookModel.Discraptions
             };
 
@@ -70,20 +71,19 @@ namespace WebApplication1.Controllers
 
         public async Task<ActionResult<NewBookResourse>> PutBooks(int id, [FromBody] BookModel book)
         {
-
-
-               var bookToUpdate = await _bookRepository.Get(id);
-            if (bookToUpdate == null) { 
+            var bookToUpdate = await _bookRepository.Get(id);
+            if (bookToUpdate == null)
+            {
                 return NotFound();
             }
-            
+
             var newBook = new Book()
             {
                 PublisherId = bookToUpdate.PublisherId,
                 Title = bookToUpdate.Title,
-                Discraptions= bookToUpdate.Discraptions
+                Discraptions = bookToUpdate.Discraptions
             };
-               var BookEntities =  await _bookRepository.Update(newBook);
+            var BookEntities = await _bookRepository.Update(newBook);
             var bookResources = BookEntities.ToResourceNew();
             return bookResources;
 
@@ -97,11 +97,11 @@ namespace WebApplication1.Controllers
         {
             var bookToDelete = await _bookRepository.Get(id);
             if (bookToDelete == null)
-      
+
                 return NotFound();
-            
+
             await _bookRepository.Delete(bookToDelete.Id);
-                return NoContent();
+            return NoContent();
         }
 
     }

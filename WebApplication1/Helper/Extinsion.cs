@@ -67,7 +67,7 @@ namespace WebApplication1.Helper
                 discraptions = entitiy.Discraptions,
                 Title = entitiy.Title,
                 Newpublisher = entitiy.Publisher.ToResourceNew(),
-                book_Authors = entitiy.book_Authors.Select(x => new Book_AuthorsResourse { AuthorId = x.AuthorId, BookId = x.BookId }).ToList(),
+                book_Authors = entitiy.book_Authors?.Select(x => new Book_AuthorsResourse { AuthorId = x.AuthorId, BookId = x.BookId }).ToList(),
             };
         }
 

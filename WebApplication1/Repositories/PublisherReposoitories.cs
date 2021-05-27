@@ -69,13 +69,12 @@ namespace WebApplication1.Repositories
         {
             if(publisher is null) {
                 throw new ArgumentNullException($"{nameof(updatePublisher)}publisher must not be null"); 
-                    }
+            }
             try
             {
-
-            _Context.Entry(publisher).State = EntityState.Modified;
-            await _Context.SaveChangesAsync();
-            return publisher;
+                _Context.publishers.Update(publisher);
+                await _Context.SaveChangesAsync();
+                return publisher;
             }
             catch(Exception ex)
             {
