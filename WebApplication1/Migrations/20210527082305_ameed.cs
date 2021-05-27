@@ -2,7 +2,7 @@
 
 namespace WebApplication1.Migrations
 {
-    public partial class Author : Migration
+    public partial class ameed : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

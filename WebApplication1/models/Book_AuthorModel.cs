@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace WebApplication1.models
 {
-    public class AuthorModel
+    public class Book_AuthorModel
     {
-        public string? FullName { get; set; }
+        public int AuthorId { get; set; }
+        public int BookId { get; set; }
     }
 }

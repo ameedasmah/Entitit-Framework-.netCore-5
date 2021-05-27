@@ -25,15 +25,15 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public async Task<IEnumerable<PublisherResourse>> GetPublishers()
         {
-            var PublisherEntii =  await _repository.GetPublishers();
+            var PublisherEntities=  await _repository.GetPublishers();
 
-            var newPublisherEntii = new List<PublisherResourse>();
+            var publisherResource = new List<PublisherResourse>();
 
-            foreach (var item in PublisherEntii)
+            foreach (var item in PublisherEntities)
             {
-                newPublisherEntii.Add(item.ToResource());
+                publisherResource.Add(item.ToResource());
             }
-            return newPublisherEntii;
+            return publisherResource;
         }
 
         [HttpGet("{id}")]
@@ -63,4 +63,13 @@ namespace WebApplication1.Controllers
 
             return NoContent();
         } 
+        [HttpDelete("{Id}")]
+        public async Task<ActionResult> DeleteResource(int Id)
+        {
+            var BookToDelete = await _repository.GetPublisher(Id);
+            if (BookToDelete is null) return NotFound();
+            
+            await _repository.deletePublisher(BookToDelete.Id);
+            return NoContent();
+        }
 }}

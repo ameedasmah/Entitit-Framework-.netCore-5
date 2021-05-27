@@ -25,14 +25,21 @@ namespace WebApplication1.Repositories
             
         }
 
+        public async Task Delete(int Id)
+        {
+            var BookToDelelte = await _bookContext.Authors.FirstOrDefaultAsync(x => x.Id == Id);
+            _bookContext.Remove(BookToDelelte);
+            await _bookContext.SaveChangesAsync();
+        }
+
         public async Task<Author> GetAuthor(int Id)
         {
-            return await _bookContext.Authors.FindAsync(Id);
+            return await _bookContext.Authors.Include(x => x.book_Authors).FirstOrDefaultAsync(X => X.Id == Id);
         }
 
         public async Task<IEnumerable<Author>> GetAuthors()
         {
-            return await _bookContext.Authors.ToListAsync();
+            return await _bookContext.Authors.Include(x => x.book_Authors).ToListAsync();
         }
 
         public async Task Update(Author author)

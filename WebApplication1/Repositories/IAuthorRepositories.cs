@@ -12,6 +12,7 @@ namespace WebApplication1.Repositories
          Task<Author> GetAuthor(int Id);
          Task<Author> CreateAuthor(Author author);
          Task Update(Author author);
+        Task Delete(int Id);
 
 
     }

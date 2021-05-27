@@ -36,6 +36,8 @@ namespace WebApplication1
             services.AddScoped<IBookRepository, BookRepositories>();
             services.AddScoped<IPublisherRepositories, PublisherReposoitories>();
             services.AddScoped<IAuthorRepositories, AuthorRepositories>();
+            services.AddScoped<IAuthorBookeRepositoires, AuthorBookeRepositoires>();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

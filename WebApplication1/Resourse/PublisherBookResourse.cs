@@ -3,10 +3,11 @@ using WebApplication1.Data;
 
 namespace WebApplication1.Resourse
 {
-    public class PublisherResourse
+    public class PublisherBookResourse
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<BookLightResource> Books { get; set; }
+
     }
 }
+

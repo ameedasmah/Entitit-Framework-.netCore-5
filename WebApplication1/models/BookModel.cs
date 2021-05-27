@@ -7,10 +7,9 @@ namespace WebApplication1.Data
 {
     public class BookModel
     {
-        //public int Id { get; set; }
-        public int? PublisherId { get; set; }
-        public String Title { get; set; }
-        public String Author { get; set; }
+        public string Title { get; set; }
+        //public int id { get; set; }
         public String Discraptions { get; set; }
+        public int PublisherId { get; set; }
     }
 }
