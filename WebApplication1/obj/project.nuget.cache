@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tiMeBPw9uNWLYPPTRFXsmhReuDuiLZI+sz/iMT5vk+AY2DpWSxIj4l90m/30SqPjcenf2vse5UneXGqhWqMhsA==",
+  "dgSpecHash": "pvam1pTWHxz9QPsOXHaCWr6x1MggmuIb1Dsy7Qqs9uHhAezFl8kB2T7bpiNxPHVcK1wLfcMGzSqy1y+BZqSPAA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ameed\\Desktop\\newWork webApi with ASP.NET Core\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+  "projectFilePath": "C:\\Users\\Ameed\\Desktop\\.netLastOne\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ameed\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Ameed\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
